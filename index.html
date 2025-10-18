@@ -3,9 +3,850 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Page</title>
+    <title>LuxeSalon - Premium Beauty Services</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <span>❤️</span>
+                <span>Lyn's Salon</span>
+            </div>
+            <div class="nav-links">
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('services')">Services</button>
+                <button onclick="showPage('stylists')">Stylists</button>
+                <button onclick="showPage('booking')">Book Now</button>
+                <button onclick="showPage('shop')">Shop</button>
+                <button onclick="showPage('blog')">Blog</button>
+                <button onclick="showPage('reviews')">Reviews</button>
+                <button class="btn-login" id="loginBtn" onclick="showPage('login')">Login</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button onclick="showPage('home'); toggleMobileMenu()">Home</button>
+            <button onclick="showPage('services'); toggleMobileMenu()">Services</button>
+            <button onclick="showPage('stylists'); toggleMobileMenu()">Stylists</button>
+            <button onclick="showPage('booking'); toggleMobileMenu()">Book Now</button>
+            <button onclick="showPage('shop'); toggleMobileMenu()">Shop</button>
+            <button onclick="showPage('blog'); toggleMobileMenu()">Blog</button>
+            <button onclick="showPage('reviews'); toggleMobileMenu()">Reviews</button>
+            <button onclick="showPage('login'); toggleMobileMenu()">Login</button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page">
+        <div class="hero">
+            <h1>Welcome to Lyn's Salon</h1>
+            <p>Experience luxury beauty treatments with our expert stylists</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="showPage('booking')">Book Appointment</button>
+                <button class="btn btn-secondary" onclick="showPage('services')">View Services</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-image">⭐</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Expert Stylists</h3>
+                        <p class="card-description">Our team of certified professionals with years of experience</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">🏆</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Premium Products</h3>
+                        <p class="card-description">We use only the finest quality products for all treatments</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">❤️</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Customer Care</h3>
+                        <p class="card-description">Your satisfaction is our top priority. Guaranteed!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="grid grid-3" id="homeReviews"></div>
+        </div>
+    </div>
+
+    <!-- Services Page -->
+    <div id="servicesPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Our Services</h1>
+            <div class="grid grid-3" id="servicesGrid"></div>
+        </div>
+    </div>
+
+    <!-- Stylists Page -->
+    <div id="stylistsPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Meet Our Stylists</h1>
+            <div class="grid grid-4" id="stylistsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Booking Page -->
+    <div id="bookingPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Book Your Appointment</h1>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="card">
+                    <div class="card-content">
+                        <form id="bookingForm" onsubmit="handleBooking(event)">
+                            <div class="form-group">
+                                <label>Select Service</label>
+                                <select class="form-control" id="bookingService" required>
+                                    <option value="">Choose a service...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Stylist</label>
+                                <select class="form-control" id="bookingStylist" required>
+                                    <option value="">Choose a stylist...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Date</label>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Time</label>
+                                <select class="form-control" id="bookingTime" required>
+                                    <option value="">Choose a time...</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Booking</button>
+                        </form>
+                        <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                            <strong>Note:</strong> You will receive SMS and email confirmation once your booking is confirmed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Page -->
+    <div id="reviewsPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Client Reviews</h1>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="stars">★★★★★</div>
+                <h2>4.9 out of 5</h2>
+                <p style="color: #6b7280;">Based on 500+ reviews</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;" id="allReviews"></div>
+        </div>
+    </div>
+
+    <!-- Shop Page -->
+    <div id="shopPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Shop Our Products</h1>
+            <div class="grid grid-4" id="productsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blogPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Beauty Blog & Tips</h1>
+            <div class="grid grid-3" id="blogGrid"></div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Login</h1>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="text-align: center; margin-bottom: 1.5rem;">Quick Demo Login</h3>
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="login('client')">
+                            👤 Login as Client
+                        </button>
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="login('staff')">
+                            👥 Login as Staff
+                        </button>
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;" onclick="login('admin')">
+                            ⚙️ Login as Admin
+                        </button>
+                        
+                        <hr style="margin: 2rem 0;">
+                        
+                        <form>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="••••••••">
+                            </div>
+                            <button type="button" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                        </form>
+                        <p style="text-align: center; margin-top: 1rem; color: #6b7280;">
+                            Don't have an account? <a href="#" style="color: #9333ea; font-weight: bold;">Sign up</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Dashboard -->
+    <div id="clientDashboard" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Welcome back, Jane Doe!</h1>
+            
+            <div class="grid grid-4" style="margin-bottom: 3rem;">
+                <div class="stat-card">
+                    <div>🏆</div>
+                    <div class="stat-label">Loyalty Points</div>
+                    <div class="stat-value">450</div>
+                </div>
+                <div class="stat-card">
+                    <div>⭐</div>
+                    <div class="stat-label">Membership</div>
+                    <div class="stat-value">Gold</div>
+                </div>
+                <div class="stat-card">
+                    <div>📅</div>
+                    <div class="stat-label">Total Visits</div>
+                    <div class="stat-value">23</div>
+                </div>
+                <div class="stat-card">
+                    <div>🕐</div>
+                    <div class="stat-label">Last Visit</div>
+                    <div class="stat-value" style="font-size: 1.2rem;">Oct 15</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">Your Appointments</h2>
+                    <div id="clientAppointments"></div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="showPage('booking')">
+                        Book New Appointment
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">Loyalty Rewards</h2>
+                    <div class="grid grid-3">
+                        <div style="border: 2px solid #e9d5ff; border-radius: 10px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem;">🎁</div>
+                            <h3>50 Points</h3>
+                            <p style="color: #6b7280; margin: 0.5rem 0;">10% Off Next Service</p>
+                            <button class="btn btn-primary" style="margin-top: 1rem;">Redeem</button>
+                        </div>
+                        <div style="border: 2px solid #e9d5ff; border-radius: 10px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem;">🎁</div>
+                            <h3>100 Points</h3>
+                            <p style="color: #6b7280; margin: 0.5rem 0;">Free Manicure</p>
+                            <button class="btn btn-primary" style="margin-top: 1rem;">Redeem</button>
+                        </div>
+                        <div style="border: 2px solid #e9d5ff; border-radius: 10px; padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem;">🎁</div>
+                            <h3>200 Points</h3>
+                            <p style="color: #6b7280; margin: 0.5rem 0;">Free Hair Treatment</p>
+                            <button class="btn" style="margin-top: 1rem; background: #d1d5db; color: #6b7280;">Need 150 More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Dashboard -->
+    <div id="staffDashboard" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Staff Dashboard</h1>
+            
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">Today's Appointments</h2>
+                    <div id="staffAppointments"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Today's Clients</h3>
+                        <div class="stat-value" style="color: #9333ea;">8</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Revenue Today</h3>
+                        <div class="stat-value" style="color: #9333ea;">$680</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Avg Rating</h3>
+                        <div class="stat-value" style="color: #9333ea;">4.9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="page hidden">
+        <div class="container">
+            <h1 class="section-title">Admin Dashboard</h1>
+            
+            <div class="grid grid-4" style="margin-bottom: 3rem;">
+                <div class="stat-card">
+                    <div>📈</div>
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value">$12,450</div>
+                    <div style="font-size: 0.875rem; opacity: 0.8;">+12% this month</div>
+                </div>
+                <div class="stat-card">
+                    <div>👥</div>
+                    <div class="stat-label">Total Clients</div>
+                    <div class="stat-value">342</div>
+                    <div style="font-size: 0.875rem; opacity: 0.8;">+8% this month</div>
+                </div>
+                <div class="stat-card">
+                    <div>📅</div>
+                    <div class="stat-label">Appointments</div>
+                    <div class="stat-value">156</div>
+                    <div style="font-size: 0.875rem; opacity: 0.8;">This week</div>
+                </div>
+                <div class="stat-card">
+                    <div>⭐</div>
+                    <div class="stat-label">Avg Rating</div>
+                    <div class="stat-value">4.9</div>
+                    <div style="font-size: 0.875rem; opacity: 0.8;">500+ reviews</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">Recent Appointments</h2>
+                    <div style="overflow-x: auto;">
+                        <table id="adminAppointmentsTable"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">📦 Inventory Alerts</h2>
+                    <div id="inventoryAlerts"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h2 style="margin-bottom: 1.5rem;">Staff Performance</h2>
+                    <div class="grid grid-4" id="staffPerformance"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LuxeSalon</h3>
+                <p>Your premier destination for luxury beauty services.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#" onclick="showPage('services')">Services</a>
+                <a href="#" onclick="showPage('booking')">Book Now</a>
+                <a href="#" onclick="showPage('shop')">Shop</a>
+                <a href="#" onclick="showPage('blog')">Blog</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>123 Beauty Street</p>
+                <p>New York, NY 10001</p>
+                <p>(555) 123-4567</p>
+                <p>info@luxesalon.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Mon-Fri: 9am-8pm</p>
+                <p>Saturday: 9am-6pm</p>
+                <p>Sunday: 10am-5pm</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #4b5563; color: #9ca3af;">
+            <p>&copy; 2025 LuxeSalon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Storage
+        const data = {
+            services: [
+                { id: 1, name: 'Haircut & Styling', price: 65, duration: '60 min', category: 'Hair', description: 'Professional cut and style' },
+                { id: 2, name: 'Hair Coloring', price: 120, duration: '120 min', category: 'Hair', description: 'Full color treatment' },
+                { id: 3, name: 'Manicure', price: 35, duration: '45 min', category: 'Nails', description: 'Classic manicure with polish' },
+                { id: 4, name: 'Pedicure', price: 45, duration: '60 min', category: 'Nails', description: 'Spa pedicure treatment' },
+                { id: 5, name: 'Facial Treatment', price: 85, duration: '75 min', category: 'Spa', description: 'Deep cleansing facial' },
+                { id: 6, name: 'Massage Therapy', price: 95, duration: '60 min', category: 'Spa', description: 'Relaxing full body massage' }
+            ],
+            stylists: [
+                { id: 1, name: 'Sarah Johnson', specialty: 'Hair Coloring', experience: '8 years', rating: 4.9, avatar: '👩‍🦰' },
+                { id: 2, name: 'Michael Chen', specialty: 'Haircuts', experience: '6 years', rating: 4.8, avatar: '👨‍🦱' },
+                { id: 3, name: 'Emily Rodriguez', specialty: 'Nails & Spa', experience: '5 years', rating: 4.9, avatar: '👩‍🦳' },
+                { id: 4, name: 'David Kim', specialty: 'Styling', experience: '10 years', rating: 5.0, avatar: '👨‍🦲' }
+            ],
+            appointments: [
+                { id: 1, client: 'Jane Doe', service: 'Haircut & Styling', stylist: 'Sarah Johnson', date: '2025-10-20', time: '10:00', status: 'confirmed' },
+                { id: 2, client: 'John Smith', service: 'Hair Coloring', stylist: 'Michael Chen', date: '2025-10-20', time: '14:00', status: 'confirmed' },
+                { id: 3, client: 'Emma Wilson', service: 'Facial Treatment', stylist: 'Emily Rodriguez', date: '2025-10-21', time: '11:00', status: 'pending' },
+                { id: 4, client: 'Jane Doe', service: 'Manicure', stylist: 'Emily Rodriguez', date: '2025-10-22', time: '15:00', status: 'confirmed' }
+            ],
+            reviews: [
+                { id: 1, client: 'Jennifer L.', rating: 5, comment: 'Amazing experience! Sarah did a fantastic job with my color.', service: 'Hair Coloring', date: '2025-10-15' },
+                { id: 2, client: 'Mark T.', rating: 5, comment: 'Best haircut I\'ve had in years. Michael is a true professional.', service: 'Haircut', date: '2025-10-14' },
+                { id: 3, client: 'Lisa K.', rating: 4, comment: 'Great spa treatment. Very relaxing atmosphere.', service: 'Facial', date: '2025-10-12' },
+                { id: 4, client: 'Robert M.', rating: 5, comment: 'Outstanding service! The staff is very friendly and professional.', service: 'Massage', date: '2025-10-10' },
+                { id: 5, client: 'Sarah P.', rating: 5, comment: 'Love my new hairstyle! Will definitely come back.', service: 'Haircut', date: '2025-10-08' }
+            ],
+            products: [
+                { id: 1, name: 'Premium Hair Serum', price: 45, category: 'Hair Care', stock: 24 },
+                { id: 2, name: 'Luxury Shampoo', price: 32, category: 'Hair Care', stock: 18 },
+                { id: 3, name: 'Nail Polish Set', price: 28, category: 'Nails', stock: 15 },
+                { id: 4, name: 'Gift Card $100', price: 100, category: 'Gift Cards', stock: 999 },
+                { id: 5, name: 'Hair Styling Cream', price: 38, category: 'Hair Care', stock: 20 },
+                { id: 6, name: 'Facial Mask Set', price: 55, category: 'Skincare', stock: 12 }
+            ],
+            blogPosts: [
+                { id: 1, title: 'Top Hair Trends for Fall 2025', excerpt: 'Discover the hottest styles this season...', date: '2025-10-15', author: 'Sarah Johnson' },
+                { id: 2, title: '5 Tips for Healthy Hair', excerpt: 'Keep your hair looking its best with these expert tips...', date: '2025-10-10', author: 'Michael Chen' },
+                { id: 3, title: 'The Perfect At-Home Manicure', excerpt: 'Professional nail care from the comfort of home...', date: '2025-10-05', author: 'Emily Rodriguez' }
+            ],
+            inventory: [
+                { id: 1, product: 'Hair Color - Blonde', quantity: 12, minStock: 5, status: 'ok' },
+                { id: 2, product: 'Shampoo Premium', quantity: 3, minStock: 10, status: 'low' },
+                { id: 3, product: 'Nail Polish - Red', quantity: 8, minStock: 5, status: 'ok' },
+                { id: 4, product: 'Towels', quantity: 2, minStock: 15, status: 'critical' }
+            ]
+        };
+
+        let currentUser = null;
+        let userRole = null;
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // Show selected page
+            const page = document.getElementById(pageId + 'Page') || document.getElementById(pageId);
+            if (page) {
+                page.classList.remove('hidden');
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Load page content
+            loadPageContent(pageId);
+        }
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Login Function
+        function login(role) {
+            userRole = role;
+            currentUser = role === 'client' ? 'Jane Doe' : role === 'staff' ? 'Staff Member' : 'Admin';
+            
+            // Update login button
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = logout;
+
+            // Show appropriate dashboard
+            if (role === 'client') {
+                showPage('clientDashboard');
+            } else if (role === 'staff') {
+                showPage('staffDashboard');
+            } else if (role === 'admin') {
+                showPage('adminDashboard');
+            }
+        }
+
+        // Logout Function
+        function logout() {
+            userRole = null;
+            currentUser = null;
+            
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.textContent = 'Login';
+            loginBtn.onclick = () => showPage('login');
+            
+            showPage('home');
+        }
+
+        // Load Page Content
+        function loadPageContent(pageId) {
+            switch(pageId) {
+                case 'home':
+                    loadHomeReviews();
+                    break;
+                case 'services':
+                    loadServices();
+                    break;
+                case 'stylists':
+                    loadStylists();
+                    break;
+                case 'booking':
+                    loadBookingForm();
+                    break;
+                case 'reviews':
+                    loadReviews();
+                    break;
+                case 'shop':
+                    loadProducts();
+                    break;
+                case 'blog':
+                    loadBlog();
+                    break;
+                case 'clientDashboard':
+                    loadClientDashboard();
+                    break;
+                case 'staffDashboard':
+                    loadStaffDashboard();
+                    break;
+                case 'adminDashboard':
+                    loadAdminDashboard();
+                    break;
+            }
+        }
+
+        // Load Home Reviews
+        function loadHomeReviews() {
+            const container = document.getElementById('homeReviews');
+            container.innerHTML = data.reviews.slice(0, 3).map(review => `
+                <div class="review-card">
+                    <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                    <p style="margin: 1rem 0; color: #374151;">"${review.comment}"</p>
+                    <p style="color: #6b7280; font-size: 0.875rem;">- ${review.client}</p>
+                </div>
+            `).join('');
+        }
+
+        // Load Services
+        function loadServices() {
+            const container = document.getElementById('servicesGrid');
+            container.innerHTML = data.services.map(service => `
+                <div class="card">
+                    <div class="card-image">💇‍♀️</div>
+                    <div class="card-content">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <h3 class="card-title">${service.name}</h3>
+                            <span style="background: #f3e8ff; color: #9333ea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.875rem; font-weight: bold;">${service.category}</span>
+                        </div>
+                        <p class="card-description">${service.description}</p>
+                        <div class="card-footer">
+                            <span style="color: #6b7280;">🕐 ${service.duration}</span>
+                            <span class="price">$${service.price}</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="bookService('${service.name}')">Book Now</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Stylists
+        function loadStylists() {
+            const container = document.getElementById('stylistsGrid');
+            container.innerHTML = data.stylists.map(stylist => `
+                <div class="card">
+                    <div class="card-image">${stylist.avatar}</div>
+                    <div class="card-content">
+                        <h3 class="card-title">${stylist.name}</h3>
+                        <p style="color: #9333ea; font-weight: bold; margin-bottom: 0.5rem;">${stylist.specialty}</p>
+                        <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">${stylist.experience} experience</p>
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <span class="stars">★</span>
+                            <span style="font-weight: bold; margin-left: 0.25rem;">${stylist.rating}</span>
+                            <span style="color: #6b7280; font-size: 0.875rem; margin-left: 0.25rem;">(200+ reviews)</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="bookStylist('${stylist.name}')">Book with ${stylist.name.split(' ')[0]}</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Booking Form
+        function loadBookingForm() {
+            const serviceSelect = document.getElementById('bookingService');
+            const stylistSelect = document.getElementById('bookingStylist');
+            const dateInput = document.getElementById('bookingDate');
+
+            serviceSelect.innerHTML = '<option value="">Choose a service...</option>' + 
+                data.services.map(s => `<option value="${s.name}">${s.name} - $${s.price}</option>`).join('');
+            
+            stylistSelect.innerHTML = '<option value="">Choose a stylist...</option>' + 
+                data.stylists.map(s => `<option value="${s.name}">${s.name} - ${s.specialty}</option>`).join('');
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        }
+
+        // Book Service (pre-fill booking form)
+        function bookService(serviceName) {
+            showPage('booking');
+            setTimeout(() => {
+                document.getElementById('bookingService').value = serviceName;
+            }, 100);
+        }
+
+        // Book Stylist (pre-fill booking form)
+        function bookStylist(stylistName) {
+            showPage('booking');
+            setTimeout(() => {
+                document.getElementById('bookingStylist').value = stylistName;
+            }, 100);
+        }
+
+        // Handle Booking Submission
+        function handleBooking(event) {
+            event.preventDefault();
+            
+            const service = document.getElementById('bookingService').value;
+            const stylist = document.getElementById('bookingStylist').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+
+            const newAppointment = {
+                id: data.appointments.length + 1,
+                client: currentUser || 'Guest',
+                service: service,
+                stylist: stylist,
+                date: date,
+                time: time,
+                status: 'pending'
+            };
+
+            data.appointments.push(newAppointment);
+
+            alert('🎉 Booking confirmed!\n\nService: ' + service + '\nStylist: ' + stylist + '\nDate: ' + date + '\nTime: ' + time + '\n\nYou will receive SMS and email confirmation shortly.');
+            
+            document.getElementById('bookingForm').reset();
+            showPage('home');
+        }
+
+        // Load Reviews
+        function loadReviews() {
+            const container = document.getElementById('allReviews');
+            container.innerHTML = data.reviews.map(review => `
+                <div class="review-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="font-weight: bold; color: #1f2937;">${review.client}</h3>
+                            <p style="color: #6b7280; font-size: 0.875rem;">${review.date}</p>
+                        </div>
+                        <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                    </div>
+                    <p style="color: #374151; margin-bottom: 0.5rem;">"${review.comment}"</p>
+                    <p style="color: #9333ea; font-weight: bold; font-size: 0.875rem;">Service: ${review.service}</p>
+                </div>
+            `).join('');
+        }
+
+        // Load Products
+        function loadProducts() {
+            const container = document.getElementById('productsGrid');
+            container.innerHTML = data.products.map(product => `
+                <div class="card">
+                    <div class="card-image">🛍️</div>
+                    <div class="card-content">
+                        <h3 class="card-title">${product.name}</h3>
+                        <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">${product.category}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span class="price">$${product.price}</span>
+                            <span style="color: #6b7280; font-size: 0.875rem;">Stock: ${product.stock}</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Blog
+        function loadBlog() {
+            const container = document.getElementById('blogGrid');
+            container.innerHTML = data.blogPosts.map(post => `
+                <div class="card" style="cursor: pointer;">
+                    <div class="card-image">📖</div>
+                    <div class="card-content">
+                        <h3 class="card-title">${post.title}</h3>
+                        <p class="card-description">${post.excerpt}</p>
+                        <div style="display: flex; justify-content: space-between; color: #6b7280; font-size: 0.875rem; margin-top: 1rem;">
+                            <span>${post.author}</span>
+                            <span>${post.date}</span>
+                        </div>
+                        <button style="width: 100%; margin-top: 1rem; color: #9333ea; font-weight: bold; background: none; border: none; cursor: pointer;">Read More →</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Client Dashboard
+        function loadClientDashboard() {
+            const container = document.getElementById('clientAppointments');
+            const clientAppts = data.appointments.filter(apt => apt.client === 'Jane Doe');
+            
+            container.innerHTML = clientAppts.map(apt => `
+                <div style="border: 2px solid #e9d5ff; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h3 style="font-weight: bold; color: #1f2937;">${apt.service}</h3>
+                        <p style="color: #6b7280;">with ${apt.stylist}</p>
+                        <p style="color: #6b7280; font-size: 0.875rem;">${apt.date} at ${apt.time}</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn" style="background: #f3e8ff; color: #9333ea;">Reschedule</button>
+                        <button class="btn" style="background: #fee2e2; color: #dc2626;">Cancel</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Staff Dashboard
+        function loadStaffDashboard() {
+            const container = document.getElementById('staffAppointments');
+            
+            container.innerHTML = data.appointments.map(apt => `
+                <div style="border: 2px solid #e5e7eb; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="background: #f3e8ff; padding: 1rem; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">👤</div>
+                        <div>
+                            <h3 style="font-weight: bold; color: #1f2937;">${apt.client}</h3>
+                            <p style="color: #6b7280;">${apt.service}</p>
+                            <p style="color: #6b7280; font-size: 0.875rem;">${apt.time} - ${apt.stylist}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="status-badge status-${apt.status}">${apt.status}</span>
+                        <button class="btn btn-primary">Complete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load Admin Dashboard
+        function loadAdminDashboard() {
+            // Load appointments table
+            const table = document.getElementById('adminAppointmentsTable');
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Client</th>
+                        <th>Service</th>
+                        <th>Stylist</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${data.appointments.map(apt => `
+                        <tr>
+                            <td>${apt.client}</td>
+                            <td>${apt.service}</td>
+                            <td>${apt.stylist}</td>
+                            <td>${apt.date}</td>
+                            <td>${apt.time}</td>
+                            <td><span class="status-badge status-${apt.status}">${apt.status}</span></td>
+                            <td><button style="color: #9333ea; font-weight: bold; background: none; border: none; cursor: pointer;">Edit</button></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `;
+
+            // Load inventory alerts
+            const inventoryContainer = document.getElementById('inventoryAlerts');
+            const alerts = data.inventory.filter(item => item.status !== 'ok');
+            inventoryContainer.innerHTML = alerts.map(item => `
+                <div class="alert alert-${item.status === 'critical' ? 'danger' : 'warning'}">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="font-weight: bold;">${item.product}</h3>
+                            <p style="font-size: 0.875rem;">Current stock: ${item.quantity} (Min: ${item.minStock})</p>
+                        </div>
+                        <button class="btn" style="background: ${item.status === 'critical' ? '#dc2626' : '#f59e0b'}; color: white;">Reorder</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Load staff performance
+            const perfContainer = document.getElementById('staffPerformance');
+            perfContainer.innerHTML = data.stylists.map(stylist => `
+                <div style="border: 2px solid #e9d5ff; border-radius: 10px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <span style="font-size: 2.5rem;">${stylist.avatar}</span>
+                        <div>
+                            <h3 style="font-weight: bold; color: #1f2937;">${stylist.name}</h3>
+                            <p style="color: #6b7280; font-size: 0.875rem;">${stylist.specialty}</p>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold; color: #9333ea;">23</p>
+                            <p style="font-size: 0.75rem; color: #6b7280;">Clients</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold; color: #9333ea;">$1,840</p>
+                            <p style="font-size: 0.75rem; color: #6b7280;">Revenue</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 1.5rem; font-weight: bold; color: #9333ea;">98%</p>
+                            <p style="font-size: 0.75rem; color: #6b7280;">Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
 </body>
 </html>
