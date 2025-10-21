@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxeSalon - Premium Beauty Services</title>
+    <title>Lyn's Salon - Premium Beauty Services</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -83,20 +83,89 @@
     </div>
 
     <!-- Services Page -->
-    <div id="servicesPage" class="page hidden">
-        <div class="container">
-            <h1 class="section-title">Our Services</h1>
-            <div class="grid grid-3" id="servicesGrid"></div>
-        </div>
+<div id="servicesPage" class="page hidden">
+  <div class="container">
+    <h1 class="section-title">Our Services</h1>
+    <div class="grid grid-3" id="servicesGrid">
+
+      <div class="service-card">
+        <h2>Hair Styling</h2>
+        <p>From sleek blowouts to elegant curls — our stylists craft looks that suit your style and occasion.</p>
+      </div>
+
+      <div class="service-card">
+        <h2>Braiding</h2>
+        <p>Protective and trendy braids, done with care and precision to keep your hair healthy and beautiful.</p>
+      </div>
+
+      <div class="service-card">
+        <h2>Hair Coloring</h2>
+        <p>Explore highlights, ombré, or full color transformations with our expert colorists.</p>
+      </div>
+
+      <div class="service-card">
+        <h2>Relaxing & Treatment</h2>
+        <p>Rejuvenate your hair with professional relaxing, steaming, and nourishing treatments.</p>
+      </div>
+
+      <div class="service-card">
+        <h2>Makeup & Beauty</h2>
+        <p>Perfect for weddings, photoshoots, and events — let our makeup artists bring out your best look.</p>
+      </div>
+
+      <div class="service-card">
+        <h2>Kids’ Styling</h2>
+        <p>Fun, gentle, and stylish hair care designed especially for our little clients.</p>
+      </div>
+
     </div>
+  </div>
+</div>
+
 
     <!-- Stylists Page -->
-    <div id="stylistsPage" class="page hidden">
-        <div class="container">
-            <h1 class="section-title">Meet Our Stylists</h1>
-            <div class="grid grid-4" id="stylistsGrid"></div>
+<div id="stylistsPage" class="page hidden">
+  <div class="container">
+    <h1 class="section-title">Meet Our Stylists</h1>
+
+    <div class="grid grid-4" id="stylistsGrid">
+
+      <div class="stylist-card">
+        <div class="stylist-image">
+          <img src="images/stylist1.jpg" alt="Lawrencia Asare">
         </div>
+        <h2>Lawrencia Asare</h2>
+        <p>Specializes in natural hair care and creative updos. Known for her gentle touch and attention to detail.</p>
+      </div>
+
+      <div class="stylist-card">
+        <div class="stylist-image">
+          <img src="images/stylist2.jpg" alt="Evelyn Mensah">
+        </div>
+        <h2>Evelyn Mensah</h2>
+        <p>Expert in braids and protective styles, Evelyn brings artistry and precision to every client she styles.</p>
+      </div>
+
+      <div class="stylist-card">
+        <div class="stylist-image">
+          <img src="images/stylist3.jpg" alt="Sandra Osei">
+        </div>
+        <h2>Sandra Osei</h2>
+        <p>Passionate about color treatments and modern cuts, Sandra helps clients express their unique style with confidence.</p>
+      </div>
+
+      <div class="stylist-card">
+        <div class="stylist-image">
+          <img src="images/stylist4.jpg" alt="Patience Boateng">
+        </div>
+        <h2>Patience Boateng</h2>
+        <p>With a calm and friendly approach, Patience excels in relaxers, trims, and everyday glam looks.</p>
+      </div>
+
     </div>
+  </div>
+</div>
+
 
     <!-- Booking Page -->
     <div id="bookingPage" class="page hidden">
@@ -110,12 +179,22 @@
                                 <label>Select Service</label>
                                 <select class="form-control" id="bookingService" required>
                                     <option value="">Choose a service...</option>
+                                    <option value="Haircut & Styling">Haircut & Styling</option>
+                                    <option value="Hair Coloring">Hair Coloring</option>
+                                    <option value="Manicure">Manicure</option>
+                                    <option value="Pedicure">Pedicure</option>
+                                    <option value="Facial Treatment">Facial Treatment</option>
+                                    <option value="Braiding">Braiding</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Select Stylist</label>
                                 <select class="form-control" id="bookingStylist" required>
                                     <option value="">Choose a stylist...</option>
+                                    <option value="Evelyn Mensah">Evelyn Mensah</option>
+                                    <option value="Lawrencia Asare">Lawrencia Asare</option>
+                                    <option value="Sandra Osei">Sandra Osei</option>
+                                    <option value="Patience Boateng">Patience Boateng</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -162,20 +241,101 @@
     </div>
 
     <!-- Shop Page -->
-    <div id="shopPage" class="page hidden">
-        <div class="container">
-            <h1 class="section-title">Shop Our Products</h1>
-            <div class="grid grid-4" id="productsGrid"></div>
+<div id="shopPage" class="page hidden">
+  <div class="container">
+    <h1 class="section-title">Shop Our Products</h1>
+
+    <div class="grid grid-4" id="productsGrid">
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images/placeholder.jpg" alt="Moisture Repair Shampoo">
         </div>
+        <h2>Moisture Repair Shampoo</h2>
+        <p>Nourishing formula that restores softness and shine to dry hair.</p>
+        <span class="price">GHS 65.00</span>
+        <button class="btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images/placeholder.jpg" alt="Hydrating Conditioner">
+        </div>
+        <h2>Hydrating Conditioner</h2>
+        <p>Deep moisture boost to keep your hair silky, smooth, and tangle-free.</p>
+        <span class="price">GHS 70.00</span>
+        <button class="btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images/placeholder.jpg" alt="Argan Hair Oil">
+        </div>
+        <h2>Argan Hair Oil</h2>
+        <p>Lightweight oil that strengthens and adds shine without greasiness.</p>
+        <span class="price">GHS 90.00</span>
+        <button class="btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="images/placeholder.jpg" alt="Edge Control Gel">
+        </div>
+        <h2>Edge Control Gel</h2>
+        <p>Perfect hold for sleek edges — non-flaking and long-lasting.</p>
+        <span class="price">GHS 45.00</span>
+        <button class="btn">Add to Cart</button>
+      </div>
+
     </div>
+  </div>
+</div>
+
 
     <!-- Blog Page -->
-    <div id="blogPage" class="page hidden">
-        <div class="container">
-            <h1 class="section-title">Beauty Blog & Tips</h1>
-            <div class="grid grid-3" id="blogGrid"></div>
+<div id="blogPage" class="page hidden">
+  <div class="container">
+    <h1 class="section-title">Beauty Blog & Tips</h1>
+
+    <div class="grid grid-3" id="blogGrid">
+
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="images/hair-care.jpg" alt="5 Tips for Healthy Hair">
         </div>
+        <div class="blog-content">
+          <h2>5 Tips for Healthy Hair</h2>
+          <p>Keep your hair shiny and strong with these easy, stylist-approved care habits you can do at home.</p>
+          <button class="btn">Read More</button>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="images/makeup-trends.jpg" alt="Top Makeup Trends 2025">
+        </div>
+        <div class="blog-content">
+          <h2>Top Makeup Trends 2025</h2>
+          <p>From dewy skin to bold lips — see what’s hot this year in the world of beauty and fashion.</p>
+          <button class="btn">Read More</button>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="images/braid-styles.jpg" alt="Stylish Braid Ideas">
+        </div>
+        <div class="blog-content">
+          <h2>Stylish Braid Ideas</h2>
+          <p>Protective yet chic — explore creative braid styles to refresh your look this season.</p>
+          <button class="btn">Read More</button>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
+
 
     <!-- Login Page -->
     <div id="loginPage" class="page hidden">
